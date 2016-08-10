@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load bootstrap_toolkit %}
+
+{% block title %}Register with Rango{% endblock %}
+
+{% block body_block %}
+    <h1>Register with Rango</h1>
+    {% if registered %}
+        Rango says: <strong>thank you for registering!</strong><br/>
+        <a href="{% url 'rango:index' %}">Return to the homepage.</a><br/>
+    {% else %}
+        Rango says: <strong>Add Profile</strong>
+        <form id="user_form" method="POST"
+              action="{% url 'rango:register_profile' %}"
+              enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ profile_form|as_bootstrap }}
+
+            <input type="submit" name="submit" value="Register"/>
+        </form>
+    {% endif %}
+{% endblock %}

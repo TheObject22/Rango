@@ -1,0 +1,19 @@
+{% extends 'rango/base.html' %}
+{% load staticfiles %} <!-- informs DJango's template system that we are using static media-->
+
+	
+	
+		{% block title %} About {% endblock %}
+	
+
+	
+{% block body_block %}
+	<div class="page-header">
+		<h1>About Rango</h1>
+	</div>
+	<div>
+		<p></strong>This page contains information about the Rango web application</p>
+		<img width="300" height="300" src="{% static "images/kingKai.jpg" %}" alt="Picture of king Kai"/> <!--Django template tags are denoted by {}. In this case the static tag will combine STATIC_URL with the "images/rango.jpg" to provide a valid link-->
+		<p> visits: {{ about_visits }}</p>
+	</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'rango/base.html' %}
+
+{% load staticfiles %}
+{% block title %}Add Category{% endblock %}
+{% block body_block %}
+		<!--All the data captured in this form is sent to the url located within action as an HTTP POST request-->
+		<form role="form" id="page_form" method="post" action="/rango/add_category/">
+		
+
+			{% csrf_token %} <!-- Cross-Site Request Forgery token which helps secure and protect the HTTP POST action [REQUIRED BY DJANGO FRAMEWORK]-->
+			{% for hidden in form.hidden_fields %}
+				{{  hidden  }}
+			{% endfor %}
+
+			<!--Add in errors that may be present and help text-->
+			{% for field in form.visible_fields %}
+				{{  field.errors  }}
+				{{  field.help_text  }}
+				{{  field  }}
+			{% endfor %}
+			<button class="btn btn-primary" type="submit" name="submit">Add Category</button>
+			
+		</form>
+{% endblock %}		
+	
